@@ -36,6 +36,6 @@ impl<T> TryFrom<JsValue> for Document<T> {
         let _raw_doc: Value = value.into_serde().unwrap();
         // TODO convert data into document type
         // let data: T = serde_json::from_value(value).unwrap();
-        Err(Error::Pouch("Not implemented yet"))
+        Err(Error::Pouch("Not implementefd yet"))
     }
 }
