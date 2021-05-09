@@ -5,7 +5,6 @@
 mod database;
 pub use crate::database::Database;
 
-/// Types used with the database
 pub mod types;
 
 /// Pouch specific error types
