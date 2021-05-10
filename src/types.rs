@@ -4,7 +4,7 @@ use std::convert::TryFrom;
 use wasm_bindgen::JsValue;
 
 use crate::errors::Error;
-
+use pouch;
 #[derive(Deserialize, Debug)]
 pub struct DatabaseInfo {
     pub doc_count: i32,
@@ -13,6 +13,19 @@ pub struct DatabaseInfo {
     pub db_name: String,
     pub auto_compaction: bool,
     pub adapter: String,
+}
+
+impl DatabaseInfo {
+    pub fn new() -> Self {
+        DatabaseInfo {
+            db_name: String::from("unknown"),
+            adapter: String::from("unknown"),
+            idb_attachment_format: String::from("unknown"),
+            doc_count: 0,
+            update_seq: 0,
+            auto_compaction: false,
+        }
+    }
 }
 
 impl TryFrom<JsValue> for DatabaseInfo {
@@ -25,8 +38,7 @@ impl TryFrom<JsValue> for DatabaseInfo {
 
 #[derive(Deserialize, Debug)]
 pub struct Document<T> {
-    pub _id: String,  // TODO make optional
-    pub _rev: String, // TODO make optional
+    pub _id: String,
     pub data: T,
 }
 
@@ -34,8 +46,7 @@ impl<T> TryFrom<JsValue> for Document<T> {
     type Error = crate::errors::Error;
     fn try_from(value: JsValue) -> Result<Self, Self::Error> {
         let _raw_doc: Value = value.into_serde().unwrap();
-        // TODO convert data into document type
-        // let data: T = serde_json::from_value(value).unwrap();
+
         Err(Error::Pouch("Not implementefd yet"))
     }
 }

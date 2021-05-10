@@ -33,14 +33,7 @@ impl Component for Model {
         Self {
             link,
             value: 0,
-            db_info: DatabaseInfo {
-                db_name: String::from("unknown"),
-                adapter: String::from("unknown"),
-                idb_attachment_format: String::from("unknown"),
-                doc_count: 0,
-                update_seq: 0,
-                auto_compaction: false,
-            },
+            db_info: DatabaseInfo::new(),
         }
     }
 
@@ -57,6 +50,7 @@ impl Component for Model {
                         Err(_) => Msg::FetchDatabaseInfoFailed,
                     }
                 };
+
                 self.link.send_future(future);
                 false
             }

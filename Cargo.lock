@@ -63,11 +63,25 @@ name = "pouch"
 version = "0.0.7-alpha"
 dependencies = [
  "js-sys",
+ "pouch 0.0.7-alpha (registry+https://github.com/rust-lang/crates.io-index)",
  "serde",
  "serde_json",
  "wasm-bindgen",
  "wasm-bindgen-futures",
  "wasm-bindgen-test",
+]
+
+[[package]]
+name = "pouch"
+version = "0.0.7-alpha"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "cff7d028cc615a6b0f5be7a798fb7e55c326c62692f2f30278c47eb3a3b242e4"
+dependencies = [
+ "js-sys",
+ "serde",
+ "serde_json",
+ "wasm-bindgen",
+ "wasm-bindgen-futures",
 ]
 
 [[package]]
